@@ -24,11 +24,12 @@ def scrape():
         featured_image_url = f'https://spaceimages-mars.com/{soup.find("img", class_="headerimage")["src"]}'
 
         #get table
+        browser.visit('https://galaxyfacts-mars.com/')
+        html = browser.html
+        soup = BeautifulSoup(html, 'html.parser')
         tables = pd.read_html('https://galaxyfacts-mars.com/')
         mars_df = tables[1]
-        mars_df.set_index(0, inplace=True)
-
-        table = mars_df.to_html()
+        table = mars_df[:].to_html(index=False, header=False, border=2)
         table.replace('\n', '')
 
         #get hemisphere images

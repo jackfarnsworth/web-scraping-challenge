@@ -33,9 +33,7 @@
       </div>
       <div class="col-lg-4">
         <h2>Mars Data</h2>
-        <table border="2" class="dataframe center">
-         {{data.table}}
-        </table>
+         {{data.table | safe}}
       </div>
     </div>
     <br>
@@ -52,6 +50,7 @@
       {% endfor %}
     </div>
     <br>
+    <hr>
   </div>
 
   </div>
